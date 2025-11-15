@@ -1,0 +1,1466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rudravatsam Pvt. Ltd. - Mining Excellence</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #0f3460;
+            --accent: #e94560;
+            --light: #16213e;
+            --dark: #16066eeb;
+            --text: #f0f6fc;
+            --bg: #0d1117;
+            --card-bg: #161b22;
+            --header-bg: rgba(13, 17, 23, 0.95);
+            --footer-bg: #0a0d12;
+            --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --gradient: linear-gradient(135deg, #0f3460 0%, #e94560 100%);
+            --gradient-light: linear-gradient(135deg, #16213e 0%, #1a1a2e 100%);
+            --mining-primary: #3a506b;
+            --mining-secondary: #1c2541;
+            --mining-accent: #f9a826;
+            --mining-dark: #0b132b;
+        
+        }
+
+        .light-mode {
+            --primary: #4361ee;
+            --secondary: #3a0ca3;
+            --accent: #f72585;
+            --light: #f8f9fa;
+            --dark: #05155aee;
+            --text: #000000;
+            --bg: #ffffff;
+            --card-bg: #f8f9fa;
+            --header-bg: rgba(255, 255, 255, 0.95);
+            --footer-bg: #e9ecef;
+            --gradient: linear-gradient(135deg, #4361ee 0%, #926de7 100%);
+            --gradient-light: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            --mining-primary: #5d7ea3;
+            --mining-secondary: #3a506b;
+            --mining-accent: #f9a826;
+            --mining-dark: #198a7e;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--header-bg);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: var(--transition);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-img {
+            width: 85px;
+            height: 55px;
+            background: var(--gradient);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 15px rgba(233, 69, 96, 0.3);
+            transform: rotate(0deg);
+            transition: var(--transition);
+            position:relative;
+            left: -100px;
+        }
+
+        .logo-img:hover {
+            transform: rotate(15deg);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--mining-accent) 0%, var(--mining-primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 2rem;
+            position: relative;
+        }
+
+        nav ul li a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 5px 0;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, var(--mining-accent) 0%, var(--mining-primary) 100%);
+            transition: var(--transition);
+        }
+
+        nav ul li a:hover {
+            color: var(--mining-accent);
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        /* Glass Morphism Dropdown */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-radius: 23px;
+            min-width: 250px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 1000;
+            padding: 15px 0;
+            margin-top: 10px;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .dropdown-content a {
+            color: var(--text);
+            padding: 12px 25px;
+            text-decoration: none;
+            display: block;
+            transition: var(--transition);
+            border-radius: 0;
+        }
+
+        .dropdown-content a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--mining-accent);
+            padding-left: 30px;
+        }
+
+        .dropdown-content a i {
+            width: 20px;
+            text-align: center;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .theme-toggle {
+            background:rgba(0, 0, 0, 0.59);
+        
+            border-color: red;
+            border-radius: 7px;
+            border-spacing: +3px;
+            color: rgb(255, 0, 0);
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            box-shadow: 0 4px 10px rgba(9, 166, 69, 0.1);
+            transition: var(--transition);
+            /* background-color: rgb(194, 88, 26); */
+        }
+
+        .theme-toggle:hover {
+            transform: translateY(7px);
+            box-shadow: 0 6px 15px rgba(38, 87, 221, 0.722);
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(11, 19, 43, 0.85), rgba(11, 19, 43, 0.9)), url('https://images.unsplash.com/photo-1541336032412-2048a678540d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            padding: 200px 0 120px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--mining-primary) 0%, var(--mining-accent) 100%);
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.8rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            background: linear-gradient(to right, #fff 0%, var(--mining-accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--mining-primary) 0%, var(--mining-accent) 100%);
+            color: white;
+            padding: 14px 35px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(249, 168, 38, 0.3);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 100%;
+            background: var(--gradient-light);
+            transition: var(--transition);
+            z-index: -1;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(249, 168, 38, 0.4);
+        }
+
+        .btn:hover::before {
+            width: 100%;
+        }
+
+        /* About Section */
+        .section {
+            padding: 120px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-title h2 {
+            font-size: 2.8rem;
+            color: var(--text);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+            font-weight: 700;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 5px;
+            background: linear-gradient(135deg, var(--mining-primary) 0%, var(--mining-accent) 100%);
+            border-radius: 5px;
+        }
+
+        .section-title p {
+            color: var(--text);
+            max-width: 700px;
+            margin: 30px auto 0;
+            opacity: 0.8;
+            font-size: 1.1rem;
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h3 {
+            font-size: 2rem;
+            margin-bottom: 25px;
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .about-image {
+            flex: 1;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--mining-primary) 0%, var(--mining-accent) 100%);
+            opacity: 0.2;
+            z-index: 1;
+            transition: var(--transition);
+        }
+
+        .about-image:hover::before {
+            opacity: 0;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.8s;
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Mining Animation */
+        .mining-animation {
+            text-align: center;
+            margin: 60px 0;
+            padding: 40px;
+            background: var(--mining-dark);
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mining-animation::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+
+        .mining-icon {
+            font-size: 4rem;
+            color: var(--mining-accent);
+            margin-bottom: 20px;
+            display: inline-block;
+            animation: miningPulse 2s infinite;
+        }
+
+        @keyframes miningPulse {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 0.8;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .mining-animation h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--mining-accent);
+        }
+
+        .mining-animation p {
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        /* CEO Section */
+        .ceo-section {
+            background: var(--mining-dark);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ceo-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+
+        .ceo-content {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .ceo-image {
+            flex: 1;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .ceo-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.8s;
+        }
+
+        .ceo-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .ceo-info {
+            flex: 1;
+        }
+
+        .ceo-info h3 {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            color: var(--mining-accent);
+            font-weight: 600;
+        }
+
+        .ceo-info p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .ceo-title {
+            color: var(--mining-accent);
+            font-weight: 500;
+            margin-bottom: 25px;
+            font-size: 1.2rem;
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+        }
+
+        .service-card {
+            background-color: var(--card-bg);
+            padding: 50px 35px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--mining-primary) 0%, var(--mining-accent) 100%);
+            opacity: 0;
+            transition: var(--transition);
+            z-index: -1;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-card:hover::before {
+            opacity: 0.05;
+        }
+
+        .service-icon {
+            width: 90px;
+            height: 90px;
+            background: var(--mining-dark);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            color: var(--mining-accent);
+            font-size: 2.2rem;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        .service-card:hover .service-icon {
+            background: linear-gradient(135deg, var(--mining-primary) 0%, var(--mining-accent) 100%);
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .service-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .service-card p {
+            opacity: 0.8;
+            line-height: 1.7;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, var(--mining-primary) 0%, var(--mining-accent) 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+
+        .contact .section-title h2 {
+            color: white;
+        }
+
+        .contact .section-title p {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .contact-content {
+            display: flex;
+            gap: 60px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-info {
+            flex: 1;
+        }
+
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        .contact-details {
+            margin-bottom: 40px;
+        }
+
+        .contact-detail {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+        }
+
+        .contact-detail i {
+            width: 50px;
+            height: 50px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            color: white;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .contact-detail div h4 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .contact-detail div p {
+            opacity: 0.9;
+        }
+
+        .contact-form {
+            flex: 1;
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 40px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 8px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            background-color: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2);
+        }
+
+        .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--footer-bg);
+            color: rgba(184, 184, 184, 0.685);
+            padding: 80px 0 40px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 50px;
+            margin-bottom: 50px;
+            
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(135deg, var(--mining-primary) 0%, var(--mining-accent) 100%);
+            border-radius: 3px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(161, 161, 179, 0.6) ;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--mining-accent);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgb(9, 75, 169);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: linear-gradient(135deg, var(--mining-primary) 0%, var(--mining-accent) 100%);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(249, 168, 38, 0.3);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgb(9, 75, 169);
+            font-size: 0.95rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .delay-1 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-2 {
+            animation-delay: 0.4s;
+        }
+
+        .delay-3 {
+            animation-delay: 0.6s;
+        }
+
+        /* Scroll to Top Button */
+        .scroll-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--mining-primary) 0%, var(--mining-accent) 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+            opacity: 0;
+            visibility: hidden;
+            z-index: 999;
+        }
+
+        .scroll-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1200px) {
+            .hero h1 {
+                font-size: 3.2rem;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .ceo-content {
+                flex-direction: column;
+            }
+            
+            .contact-content {
+                flex-direction: column;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--header-bg);
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+            }
+            
+            nav ul.active {
+                display: flex;
+            }
+            
+            nav ul li {
+                margin: 15px 0;
+            }
+            
+            .dropdown-content {
+                position: static;
+                display: none;
+                background: rgba(255, 255, 255, 0.05);
+                border-radius: 15px;
+                margin-top: 10px;
+                opacity: 1;
+                transform: none;
+                box-shadow: none;
+                border: none;
+            }
+            
+            .dropdown.active .dropdown-content {
+                display: block;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .hero {
+                padding: 160px 0 100px;
+            }
+            
+            .hero h1 {
+                font-size: 2.4rem;
+            }
+            
+            .section {
+                padding: 100px 0;
+            }
+            
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero {
+                padding: 140px 0 80px;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .logo-container {
+                gap: 8px;
+            }
+            
+            .logo {
+                font-size: 1.5rem;
+            }
+            
+            .logo-img {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+            
+            .btn {
+                padding: 12px 25px;
+            }
+            
+            .service-card {
+                padding: 40px 25px;
+            }
+            
+            .contact-form {
+                padding: 30px 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-container">
+                    <div class="logo-img">ZodiacX</div>
+                    <div class="logo">Rudravatsam</div>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li class="dropdown">
+                            <a href="#projects">Projects <i class="fas fa-chevron-down"></i></a>
+                            <div class="dropdown-content">
+                                <a href="#"><i class="fas fa-mountain"></i> Coal Mining Operations</a>
+                                <a href="#"><i class="fas fa-hard-hat"></i> Mineral Exploration</a>
+                                <a href="#"><i class="fas fa-truck"></i> Logistics & Transport</a>
+                                <a href="#"><i class="fas fa-recycle"></i> Sustainable Practices</a>
+                                <a href="#"><i class="fas fa-chart-line"></i> Project Development</a>
+                            </div>
+                        </li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+                <div class="header-actions">
+                    <button class="theme-toggle" id="themeToggle">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <div class="mobile-menu">
+                        <i class="fas fa-bars"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="fade-in">Mining Excellence for a Sustainable Future</h1>
+                <p class="fade-in delay-1">Rudravatsam Pvt. Ltd. is a premier mining company dedicated to responsible resource extraction and sustainable development practices.</p>
+                <a href="#contact" class="btn fade-in delay-2">Get In Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>About Rudravatsam</h2>
+                <p>We are committed to responsible mining practices that balance economic growth with environmental stewardship.</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text fade-in">
+                    <h3>Leading the Mining Industry</h3>
+                    <p>Founded with a vision to revolutionize the mining sector, Rudravatsam combines technical expertise, innovation, and sustainable practices to deliver exceptional value.</p>
+                    <p>Our approach is centered around responsible resource extraction, community development, and environmental conservation. We believe in creating lasting positive impact through our operations.</p>
+                    <p>With state-of-the-art technology and a commitment to safety, Rudravatsam is poised to lead the way in sustainable mining practices and technological advancement.</p>
+                    <a href="#services" class="btn" style="margin-top: 20px;">Our Services</a>
+                </div>
+                <div class="about-image fade-in delay-1">
+                    <img src="https://images.unsplash.com/photo-1541336032412-2048a678540d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Mining Operations">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mining Animation Section -->
+    <div class="container">
+        <div class="mining-animation fade-in">
+            <div class="mining-icon">
+                <i class="fas fa-hard-hat"></i>
+            </div>
+            <h3>Advanced Mining Operations</h3>
+            <p>Our state-of-the-art mining operations utilize cutting-edge technology to maximize efficiency while minimizing environmental impact. We're committed to sustainable practices that ensure resources for future generations.</p>
+        </div>
+    </div>
+
+    <!-- CEO Section -->
+    <section class="section ceo-section" id="ceo">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Leadership</h2>
+                <p>Meet the visionary leader steering Rudravatsam towards excellence.</p>
+            </div>
+            <div class="ceo-content">
+                <div class="ceo-image fade-in">
+                    <img src="Screenshot 2025-11-15 140659.png">
+                </div>
+                <div class="ceo-info fade-in delay-1">
+                    <h3>ANKUR Pandey</h3>
+                    <p class="ceo-title">Chief Executive Officer (CEO)</p>
+                    <p>With over 15 years of experience in the mining industry, Er. Deepak Singh brings visionary leadership and technical expertise to Rudravatsam Pvt. Ltd.</p>
+                    <p>Under his guidance, the company has expanded operations while maintaining the highest standards of safety and environmental responsibility.</p>
+                    <p>His commitment to innovation and sustainable practices has positioned Rudravatsam as a leader in the mining sector.</p>
+                    <div class="contact-detail" style="margin-top: 30px;">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>deepak.singh@rudravatsam.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section" id="services">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Our Services</h2>
+                <p>We offer comprehensive mining and resource management solutions.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-mountain"></i>
+                    </div>
+                    <h3>Coal Mining</h3>
+                    <p>Efficient and responsible coal extraction using advanced mining techniques and equipment.</p>
+                </div>
+                <div class="service-card fade-in delay-1">
+                    <div class="service-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>Mineral Exploration</h3>
+                    <p>Comprehensive geological surveys and mineral exploration to identify valuable resources.</p>
+                </div>
+                <div class="service-card fade-in delay-2">
+                    <div class="service-icon">
+                        <i class="fas fa-truck-loading"></i>
+                    </div>
+                    <h3>Resource Logistics</h3>
+                    <p>Efficient transportation and logistics solutions for mined resources and equipment.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-recycle"></i>
+                    </div>
+                    <h3>Environmental Management</h3>
+                    <p>Sustainable practices and rehabilitation programs to minimize environmental impact.</p>
+                </div>
+                <div class="service-card fade-in delay-1">
+                    <div class="service-icon">
+                        <i class="fas fa-hard-hat"></i>
+                    </div>
+                    <h3>Safety Compliance</h3>
+                    <p>Rigorous safety protocols and training programs to ensure worker well-being.</p>
+                </div>
+                <div class="service-card fade-in delay-2">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Consulting Services</h3>
+                    <p>Expert mining consultancy for project development and operational optimization.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact" id="contact">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Contact Us</h2>
+                <p>Get in touch with us to discuss potential collaborations or learn more about our services.</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info fade-in">
+                    <h3>Get In Touch</h3>
+                    <div class="contact-details">
+                        <div class="contact-detail">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h4>Our Office</h4>
+                                <p>Mining Complex, Industrial Area, Ranchi, Jharkhand 834001</p>
+                            </div>
+                        </div>
+                        <div class="contact-detail">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h4>Phone</h4>
+                                <p>+91 (651) 234-5678</p>
+                            </div>
+                        </div>
+                        <div class="contact-detail">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4>Email</h4>
+                                <p>info@rudravatsam.com</p>
+                            </div>
+                        </div>
+                    </div>
+                    <h3>Leadership Contact</h3>
+                    <div class="contact-details">
+                        <div class="contact-detail">
+                            <i class="fas fa-user"></i>
+                            <div>
+                                <h4>Er. Deepak Singh</h4>
+                                <p>deepak.singh@rudravatsam.com | CEO</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form fade-in delay-1">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" class="form-control" placeholder="Enter your name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Your Email</label>
+                            <input type="email" id="email" class="form-control" placeholder="Enter your email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" class="form-control" placeholder="Enter subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Your Message</label>
+                            <textarea id="message" class="form-control" placeholder="Enter your message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn" id="submitBtn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column fade-in">
+                    <h3>Rudravatsam</h3>
+                    <p>Mining excellence for a sustainable future. We are committed to responsible resource extraction and community development.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column fade-in delay-1">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column fade-in delay-2">
+                    <h3>Our Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Coal Mining</a></li>
+                        <li><a href="#">Mineral Exploration</a></li>
+                        <li><a href="#">Resource Logistics</a></li>
+                        <li><a href="#">Environmental Management</a></li>
+                        <li><a href="#">Safety Compliance</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column fade-in delay-3">
+                    <h3>Contact Info</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i> Mining Complex, Industrial Area, Ranchi</li>
+                        <li><i class="fas fa-phone"></i> +91 (651) 234-5678</li>
+                        <li><i class="fas fa-envelope"></i> info@rudravatsam.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Rudravatsam Pvt. Ltd. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <div class="scroll-to-top" id="scrollToTop">
+        <i class="fas fa-chevron-up"></i>
+    </div>
+
+    <script>
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = themeToggle.querySelector('i');
+        
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('light-mode');
+            
+            if (document.body.classList.contains('light-mode')) {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+                localStorage.setItem('theme', 'light');
+            } else {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+
+        // Check for saved theme preference
+        if (localStorage.getItem('theme') === 'light') {
+            document.body.classList.add('light-mode');
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+        }
+
+        // Mobile Menu Toggle
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            document.querySelector('nav ul').classList.toggle('active');
+        });
+
+        // Mobile Dropdown Toggle
+        if (window.innerWidth <= 768) {
+            const dropdowns = document.querySelectorAll('.dropdown');
+            dropdowns.forEach(dropdown => {
+                dropdown.addEventListener('click', function(e) {
+                    if (e.target.tagName === 'A') {
+                        e.preventDefault();
+                        this.classList.toggle('active');
+                    }
+                });
+            });
+        }
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu after clicking a link
+                    if(window.innerWidth <= 768) {
+                        document.querySelector('nav ul').classList.remove('active');
+                        document.querySelectorAll('.dropdown').forEach(dropdown => {
+                            dropdown.classList.remove('active');
+                        });
+                    }
+                }
+            });
+        });
+
+        // Form Submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+            
+            // Simulate form submission
+            setTimeout(() => {
+                alert('Thank you for your message! We will get back to you soon.');
+                document.getElementById('contactForm').reset();
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Send Message';
+            }, 1500);
+        });
+
+        // Sticky Header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            const scrollToTop = document.getElementById('scrollToTop');
+            
+            if(window.scrollY > 100) {
+                header.style.backgroundColor = 'var(--header-bg)';
+                header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
+                scrollToTop.classList.add('active');
+            } else {
+                header.style.backgroundColor = 'var(--header-bg)';
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+                scrollToTop.classList.remove('active');
+            }
+        });
+
+        // Scroll to Top
+        document.getElementById('scrollToTop').addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Animation on Scroll
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.section-title, .about-text, .about-image, .ceo-image, .ceo-info, .service-card, .footer-column, .mining-animation').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
